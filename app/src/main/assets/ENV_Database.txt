@@ -1,0 +1,76 @@
+[{
+		"DB00": [{
+				"USER_AUTH_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/users/incoming_webhook/GET_User_ByEmail?secret=SECRET"
+			},
+			{
+				"USER_GET_SECURITY_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/user_security/incoming_webhook/GET_UserSecurityByEmail?secret=SECRET"
+			},
+			{
+				"USER_EDIT_SECURITY_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/user_security/incoming_webhook/EDIT_UserSecurityByEmail?secret=SECRET"
+			},
+			{
+				"USER_CHANGE_PASSWORD_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/users/incoming_webhook/EDIT_ChangePasswordByEmail?secret=SECRET"
+			},
+			{
+				"USER_UPDATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/users/incoming_webhook/EDIT_User_ById?secret=SECRET"
+			},
+			{
+				"USER_REGISTER_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/users/incoming_webhook/POST_CreateNewUser?secret=SECRET"
+			},
+
+			{
+				"MEMBER_GET_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/members/incoming_webhook/GET_Members_ByUser_ByOrg?secret=SECRET"
+			},
+			{
+				"MEMBER_CREATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/members/incoming_webhook/POST_AddNewMember?secret=SECRET"
+			},
+			{
+				"MEMBER_UPDATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/members/incoming_webhook/EDIT_Member_ById?secret=SECRET"
+			},
+			{
+				"MEMBER_DELETE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/members/incoming_webhook/DELETE_Member_ById?secret=SECRET"
+			},
+			{
+				"MEMBER_IMAGE_CREATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/member_image/incoming_webhook/POST_MemberImage_ById_ByOrg?secret=SECRET"
+			},
+			{
+				"MEMBER_IMAGE_GET_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/member_image/incoming_webhook/GET_MemberImage_ById_ByOrg?secret=SECRET"
+			},
+			{
+				"MEMBER_IMAGE_UPDATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/member_image/incoming_webhook/EDIT_MemberImage_ById_ByOrg?secret=SECRET"
+			},
+			{
+				"MEMBER_IMAGE_DELETE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/member_image/incoming_webhook/DELETE_MemberImage_ById_ByOrg?secret=SECRET"
+			}
+		]
+	},
+
+	{
+		"DB01": [{
+				"MEMBER_GET_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/members/incoming_webhook/GET_Members_ByUser_ByOrg?secret=SECRET"
+			},
+			{
+				"MEMBER_CREATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/members/incoming_webhook/POST_AddNewMember?secret=SECRET"
+			},
+			{
+				"MEMBER_UPDATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/members/incoming_webhook/EDIT_Member_ById?secret=SECRET"
+			},
+			{
+				"MEMBER_DELETE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/members/incoming_webhook/DELETE_Member_ById?secret=SECRET"
+			},
+			{
+				"MEMBER_IMAGE_CREATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/member_image/incoming_webhook/POST_MemberImage_ById_ByOrg?secret=SECRET"
+			},
+			{
+				"MEMBER_IMAGE_GET_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/member_image/incoming_webhook/GET_MemberImage_ById_ByOrg?secret=SECRET"
+			},
+			{
+				"MEMBER_IMAGE_UPDATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/member_image/incoming_webhook/EDIT_MemberImage_ById_ByOrg?secret=SECRET"
+			},
+			{
+				"MEMBER_IMAGE_DELETE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/member_image/incoming_webhook/DELETE_MemberImage_ById_ByOrg?secret=SECRET"
+			}
+		]
+	}
+
+]

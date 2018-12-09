@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Boulders</string>
+    <string name="app_version">1.0.0</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- MainActivity -->
+    <string name="text_hint_member">Search a member here</string>
+
+    <!-- MenuItems -->
+    <string name="text_item_edit_profile">Profile Settings</string>
+    <string name="text_item_title_about">About</string>
+    <string name="text_item_title_logout">Logout</string>
+
+    <!-- memberProfileActivity -->
+    <string name="title_activity_member_profile">Member Profile</string>
+    <string name="title_activity_authentication">Login</string>
+    <string name="title_activity_registration">Register</string>
+    <string name="title_activity_userprofile">Edit Your Profile</string>
+    <string name="title_activity_addmember">Add new member</string>
+    <string name="title_activity_editmember">Edit Member</string>
+    <string name="title_activity_about">About</string>
+
+    <string name="text_username">Email</string>
+    <string name="text_password">Password</string>
+    <string name="button_login">Login</string>
+    <string name="button_findUser">Find me</string>
+    <string name="text_firstname">First Name*</string>
+    <string name="text_lastname">Last Name*</string>
+    <string name="text_email">Email*</string>
+    <string name="text_orgname">Organization*</string>
+    <string name="text_setpass">Set Password*</string>
+    <string name="text_confirmpass">Confirm Password*</string>
+    <string name="button_Register">Complete Registration</string>
+
+    <string name="text_memberfirstname">First Name*</string>
+    <string name="text_memberlastname">Last Name*</string>
+    <string name="text_memberphone">Phone*</string>
+    <string name="text_memberemail">Email*</string>
+    <string name="text_membercyclestartdate">Cycle Start Date*</string>
+    <string name="text_memberaddress">Address*</string>
+    <string name="button_addmember">Add Member Details</string>
+    <string name="button_savemember">Save Member Details</string>
+    <string name="message_login_fail">Login failed</string>
+    <string name="message_registration_fail">Registration failed</string>
+    <string name="message_member_creation_failed">Member creation failed</string>
+    <string name="message_member_updation_failed">Member details not saved</string>
+
+    <string name="button_RemoveMember">Remove Member</string>
+    <string name="button_changePassword">Set</string>
+
+    <string-array name="security_ques_array">
+        <item>What was your high school name?</item>
+        <item>Where were you born?</item>
+        <item>Which football team do you support?</item>
+        <item>What is your mother\'s maiden name?</item>
+        <item>What is your secret superhero name?</item>
+    </string-array>
+
+</resources>
