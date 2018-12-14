@@ -19,6 +19,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -63,7 +64,9 @@ public class EditMemberProfileActivity extends AppCompatActivity {
     @Inject
     SharedPrefStorage mSharedPrefStorage;
 
+    @Inject
     ImageStorage imageStorage;
+
 
     private RelativeLayout mProgressBar;
     private ImageView mMemberAvatar;
@@ -119,20 +122,20 @@ public class EditMemberProfileActivity extends AppCompatActivity {
         mProgressBar = findViewById(R.id.rl_progressBar);
         mProgressBar.bringToFront();
 
-        imageStorage = new ImageStorage(this);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
 
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
-        });*/
+        });
+
         Intent intent = getIntent();
         fab = findViewById(R.id.fab);
         fabAddImage = findViewById(R.id.fab_emf_addImage);
@@ -569,7 +572,7 @@ public class EditMemberProfileActivity extends AppCompatActivity {
 
 
     public void rotateImage(){
-        mMemberAvatar.setDrawingCacheEnabled(false);
+
         mMemberAvatar.setDrawingCacheEnabled(true);
 
         Bitmap fetchedBitmapFromImageView = mMemberAvatar.getDrawingCache();

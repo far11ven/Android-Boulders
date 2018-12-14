@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -43,14 +42,11 @@ public class MemberProfileActivity extends AppCompatActivity {
     @Inject
     HttpClient mHttpClient;
 
+    @Inject
     ImageStorage imageStorage;
+
     private Member mMember;
     private View snackview;
-    private FloatingActionButton editMember;
-    private FloatingActionButton deleteMember;
-    private FloatingActionButton callMember;
-
-    TextView memberPhone;
 
     private static final String EXTRA_MEMBER = "Member";
 
@@ -74,28 +70,25 @@ public class MemberProfileActivity extends AppCompatActivity {
         appComponent.inject(this);
 
         snackview = findViewById(android.R.id.content);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
+
         setSupportActionBar(toolbar);
-
-        imageStorage = new ImageStorage(this);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(MemberProfileActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
+                onBackPressed();
             }
         });
+
         Intent intent = getIntent();
         mMember = intent.getParcelableExtra(EXTRA_MEMBER);
         setProfile(mMember);
 
-        editMember = findViewById(R.id.fab_editMember);
+        FloatingActionButton editMember = findViewById(R.id.fab_editMember);
 
         editMember.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +102,7 @@ public class MemberProfileActivity extends AppCompatActivity {
             }
         });
 
-        deleteMember = findViewById(R.id.fab_deleteMember);
+        FloatingActionButton deleteMember = findViewById(R.id.fab_deleteMember);
 
         deleteMember.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,22 +110,6 @@ public class MemberProfileActivity extends AppCompatActivity {
                 System.out.println(" ====================================== Launching Delete Member  =========================================");
 
                 showDeleteConfirmationDialog();
-
-            }
-        });
-
-        callMember = findViewById(R.id.fab_callMember);
-
-        callMember.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + memberPhone.getText().toString()));
-
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                }
 
             }
         });
@@ -178,7 +155,7 @@ public class MemberProfileActivity extends AppCompatActivity {
         ImageView memberAvatar = findViewById(R.id.iv_memberAvatar);
         TextView memberFirstName = findViewById(R.id.tv_memberFirstName);
         TextView memberLastName = findViewById(R.id.tv_memberLastName);
-        memberPhone = findViewById(R.id.tv_memberPhone);
+        TextView memberPhone = findViewById(R.id.tv_memberPhone);
         TextView memberEmail = findViewById(R.id.tv_memberEmail);
         TextView memberAddress = findViewById(R.id.tv_memberAddress);
         TextView memberCycleStartDate = findViewById(R.id.tv_memberCycleStartDate);
@@ -213,8 +190,8 @@ public class MemberProfileActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent= new Intent(MemberProfileActivity.this, MainActivity.class);
-        startActivity(intent);
+        Intent i= new Intent(MemberProfileActivity.this, MainActivity.class);
+        startActivity(i);
         finish();
     }
 

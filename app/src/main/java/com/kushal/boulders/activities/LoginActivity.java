@@ -26,6 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.common.hash.Hashing;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -40,6 +41,8 @@ import com.kushal.boulders.utils.storage.SharedPrefStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.nio.charset.StandardCharsets;
 
 import javax.inject.Inject;
 import static com.kushal.boulders.misc.Constants.LOG_TAG;
@@ -181,8 +184,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btn_verifyUserDetails:
+                String securityAnswer = mEditTextSecurityAnswer.getText().toString().toLowerCase();
+                String SecurityToken = Hashing.sha256()
+                        .hashString(securityAnswer, StandardCharsets.UTF_8)
+                        .toString();
 
-                if(mEditTextSecurityAnswer.getText().toString().toLowerCase().equals(securityToken.toLowerCase())) {
+                if(SecurityToken.equals(securityToken)) {
 
                     mUserVerifySecurityQuestionLayout.setVisibility(View.GONE);
                     mUserChangePasswordLayout.setVisibility(View.VISIBLE);
@@ -258,6 +265,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         final String username = mEditTextUsername.getText().toString();
         final String password = mEditTextPassword.getText().toString();
 
+        final String passwordHash = Hashing.sha256()
+                .hashString(password, StandardCharsets.UTF_8)
+                .toString();
+
         if(password.length() > 5 ) {
             mHttpClient.fetchUser(username, new HttpClient.UserLoginCallback() {
 
@@ -265,7 +276,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 public void run() {
 
                     if (mHttpClient.getResponseMessage().contains("User found")){
-                         if (mUser.match(username, password)) {
+                         if (mUser.match(username, passwordHash)) {
                               mSharedPrefStorage.saveUserName(mUser);
 
                          // fetching SecurityQuestion
@@ -441,11 +452,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         final String email = mEditTextFindEmail.getText().toString();
         final String newpassword = mEditTextNewPassword.getText().toString();
 
+        String newpasswordHash = Hashing.sha256()
+                .hashString(newpassword, StandardCharsets.UTF_8)
+                .toString();
 
         JSONObject postBody = new JSONObject();
         try {
             postBody.put("username", email);
-            postBody.put("new_password", newpassword);
+            postBody.put("new_password", newpasswordHash);
         } catch(JSONException e){
             e.printStackTrace();
 

@@ -27,6 +27,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.common.hash.Hashing;
 import com.kushal.boulders.App;
 import com.kushal.boulders.R;
 import com.kushal.boulders.dependencies.component.AppComponent;
@@ -35,6 +36,8 @@ import com.kushal.boulders.utils.storage.SharedPrefStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.nio.charset.StandardCharsets;
 
 import javax.inject.Inject;
 
@@ -45,10 +48,10 @@ import static com.kushal.boulders.misc.Constants.LOG_TAG;
 public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Inject
-    SharedPrefStorage mSharedPrefStorage;
+    HttpClient mHttpClient;
 
     @Inject
-    HttpClient mHttpClient;
+    SharedPrefStorage mSharedPrefStorage;
 
     Spinner mUserSecurityQustions ;
     ImageView mUserAvatar ;
@@ -91,19 +94,18 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         appComponent.inject(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
 
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
-
-        Intent intent = getIntent();
 
          snackview = findViewById(android.R.id.content);
 
@@ -201,11 +203,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         mUserLastName.setText(mSharedPrefStorage.getUserLastName());
         mUserEmail.setText(mSharedPrefStorage.getUser().getUserName());
         mUserOrgName.setText(mSharedPrefStorage.getUserOrg());
-        mUserSecurityAnswer.setText(mSharedPrefStorage.getUserSecurityAnswer());
-
-        System.out.println(" ====================== =============== Setting Spinner value ..." );
-        System.out.println(" ====================== =============== Setting Spinner value ..." + mSharedPrefStorage.getUserSecurityQuestion());
-        System.out.println(" ====================== =============== Setting Spinner value ..." + mSharedPrefStorage.getUserSecurityAnswer());
+        //mUserSecurityAnswer.setText(mSharedPrefStorage.getUserSecurityAnswer());
 
         mUserSecurityQustions.setSelection(securityQuestionAdapter.getPosition(mSharedPrefStorage.getUserSecurityQuestion()));
 
@@ -352,10 +350,14 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
 
         final String email = mUserEmail.getText().toString();
 
+        String newpasswordHash = Hashing.sha256()
+                .hashString(newpassword, StandardCharsets.UTF_8)
+                .toString();
+
         JSONObject postBody = new JSONObject();
         try {
             postBody.put("username", email);
-            postBody.put("new_password", newpassword);
+            postBody.put("new_password", newpasswordHash);
         } catch(JSONException e){
             e.printStackTrace();
 
@@ -367,7 +369,11 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
 
         final String email = mUserEmail.getText().toString();
         final String security_question = mUserSecurityQustions.getSelectedItem().toString();
-        final String security_token = mUserSecurityAnswer.getText().toString();
+        final String securityAnswer = mUserSecurityAnswer.getText().toString().toLowerCase();
+
+        String security_token = Hashing.sha256()
+                .hashString(securityAnswer, StandardCharsets.UTF_8)
+                .toString();
 
 
         JSONObject postBody = new JSONObject();

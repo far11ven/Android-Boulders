@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
+import com.google.common.hash.Hashing;
 import com.kushal.boulders.App;
 import com.kushal.boulders.R;
 import com.kushal.boulders.dependencies.component.AppComponent;
@@ -35,6 +36,8 @@ import com.kushal.boulders.utils.storage.SharedPrefStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.nio.charset.StandardCharsets;
 
 import javax.inject.Inject;
 
@@ -317,9 +320,15 @@ public class RegistrationActivity extends AppCompatActivity {
         final String org_name = mEditTextOrgname.getText().toString();
         final String email = mEditTextEmail.getText().toString();
         final String password = mEditTextSetPassword.getText().toString();
+        final String passwordHash = Hashing.sha256()
+                .hashString(password, StandardCharsets.UTF_8)
+                .toString();
 
         final String securityQuestion = mSecurityQuestions.getSelectedItem().toString();
-        final String securityToken = mEditTextSecurityAnswer.getText().toString();
+        final String securityAnswer = mEditTextSecurityAnswer.getText().toString().toLowerCase();
+        final String securityToken = Hashing.sha256()
+                .hashString(securityAnswer, StandardCharsets.UTF_8)
+                .toString();
 
         JSONObject postBody = new JSONObject();
         try {
@@ -327,7 +336,7 @@ public class RegistrationActivity extends AppCompatActivity {
             postBody.put("last_name", lastname);
             postBody.put("org_name", org_name);
             postBody.put("email", email);
-            postBody.put("password", password);
+            postBody.put("password", passwordHash);
             postBody.put("security_question", securityQuestion);
             postBody.put("security_token", securityToken);
         } catch(JSONException e){

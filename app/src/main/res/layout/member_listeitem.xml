@@ -124,12 +124,26 @@
                 app:layout_constraintStart_toEndOf="@+id/tv_MemberCycleEndDate"
                 app:layout_constraintTop_toTopOf="parent">
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_amf_memberAvatarholder"
+                style="@style/MemberItemAvatarHolder_CardViewStyle"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="45dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.999"
+                app:layout_constraintStart_toEndOf="@+id/tv_MemberCycleEndDate"
+                app:layout_constraintTop_toTopOf="parent">
+
                 <ImageView
                     android:id="@+id/iv_MemberAvatar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="Member Profile Picture" />
 
+            </android.support.v7.widget.CardView>
             </android.support.v7.widget.CardView>
 
         </android.support.constraint.ConstraintLayout>

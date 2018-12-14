@@ -3,7 +3,7 @@ package com.kushal.boulders.utils.storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class ConfigStorage {
+public class ConfigStorage implements Storage{
 
     private static final String PREFS_NAME = "BouldersPrefs_ConfigStorage";
 
@@ -11,6 +11,13 @@ public class ConfigStorage {
 
     public ConfigStorage(Context context) {
         this.mSharedPref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    }
+
+    @Override
+    public void resetStorage() {
+        SharedPreferences.Editor editor = mSharedPref.edit();
+        editor.clear();
+        editor.apply();
     }
 
     public String getConfigValue(String dbName, String keyName) {
@@ -35,10 +42,5 @@ public class ConfigStorage {
         editor.apply();
     }
 
-    public void resetStorage() {
-        SharedPreferences.Editor editor = mSharedPref.edit();
-        editor.clear();
-        editor.apply();
-    }
 
 }

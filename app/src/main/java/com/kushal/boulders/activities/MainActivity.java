@@ -32,11 +32,12 @@ import com.kushal.boulders.adapters.MemberRecycleViewAdapter;
 import com.kushal.boulders.dependencies.component.AppComponent;
 import com.kushal.boulders.models.Member;
 import com.kushal.boulders.utils.network.HttpClient;
+import com.kushal.boulders.utils.storage.ConfigStorage;
+import com.kushal.boulders.utils.storage.ImageStorage;
 import com.kushal.boulders.utils.storage.SharedPrefStorage;
 
 import org.joda.time.DateTime;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -53,6 +54,12 @@ public class MainActivity extends AuthenticatedActivity
 
     @Inject
     SharedPrefStorage mSharedPrefStorage;
+
+    @Inject
+    ImageStorage mImageStorage;
+
+    @Inject
+    ConfigStorage mConfigStorage;
 
     private static final int STORAGE_PERMISSION_CODE = 123;
 
@@ -77,7 +84,7 @@ public class MainActivity extends AuthenticatedActivity
         super.onResume();
 
         requestStoragePermission();
-        //getMemebersToSearch();
+        getMemebersToSearch();
 
         if(mSharedPrefStorage.getUserId() == null){
             saveLoggedInUser();
@@ -104,7 +111,6 @@ public class MainActivity extends AuthenticatedActivity
         appComponent.inject(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.inflateMenu(R.menu.toolbar_main_menu);
         setSupportActionBar(toolbar);
 
         //getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -283,7 +289,8 @@ public class MainActivity extends AuthenticatedActivity
         switch(id){
 
             case R.id.nav_logout :
-                mSharedPrefStorage.resetUser();
+                mSharedPrefStorage.resetStorage();
+                mImageStorage.resetStorage();
                 Log.i(LOG_TAG, "User is logged out");
                 startActivity(LoginActivity.createIntent(MainActivity.this));
                 break;

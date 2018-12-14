@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.kushal.boulders.dependencies.component.AppComponent;
 import com.kushal.boulders.dependencies.component.DaggerAppComponent;
+import com.kushal.boulders.dependencies.module.ConfigStoragePrefModule;
+import com.kushal.boulders.dependencies.module.ImageStoragePrefModule;
 import com.kushal.boulders.dependencies.module.NetworkModule;
 import com.kushal.boulders.dependencies.module.SharedPrefStorageModule;
 
@@ -22,6 +24,8 @@ public class App extends Application {
         mAppComponent = DaggerAppComponent.builder()
                 .networkModule(new NetworkModule(getApplicationContext()))
                 .sharedPrefStorageModule(new SharedPrefStorageModule(getApplicationContext()))
+                .configStoragePrefModule(new ConfigStoragePrefModule(getApplicationContext()))
+                .imageStoragePrefModule(new ImageStoragePrefModule(getApplicationContext()))
                 .build();
     }
 

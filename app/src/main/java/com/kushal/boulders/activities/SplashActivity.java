@@ -26,11 +26,7 @@ import javax.inject.Inject;
 
 public class SplashActivity extends AuthenticatedActivity {
 
-    @Inject
-    SharedPrefStorage mSharedPrefStorage;
-
     private static int SPLASH_TIME_OUT = 1000;
-    ImageStorage imageStorage ;
     ConfigStorage configStorage;
     JsonParser  mJsonParser;
 
@@ -40,7 +36,6 @@ public class SplashActivity extends AuthenticatedActivity {
         AppComponent appComponent = App.getApplicationContext(this).getAppComponent();
         appComponent.inject(this);
 
-        imageStorage = new ImageStorage(this);
         configStorage = new ConfigStorage (this);
 
         mJsonParser = new JsonParser();

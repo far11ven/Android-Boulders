@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.kushal.boulders.activities.UserProfileActivity"
     tools:showIn="@layout/activity_user_profile">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBarLayout">
 
     <View
         android:id="@+id/view_greenArea"
@@ -30,30 +50,41 @@
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:elevation="10dp">
 
-        <RelativeLayout
-            android:layout_width="125dp"
-            android:layout_height="137dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:elevation="10dp">
-              <android.support.v7.widget.CardView
-                    android:layout_width="124dp"
-                    android:layout_height="124dp"
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_userProfilePic"
+                style="@style/MemberItem_CardViewStyle"
+                android:layout_width="124dp"
+                android:layout_height="124dp"
+                android:layout_centerHorizontal="true"
+                app:cardCornerRadius="60dp"
+                app:contentPadding="2dp"
+                android:elevation="10dp">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_userProfilePicHolder"
+                    style="@style/MemberItemAvatarHolder_CardViewStyle"
+                    android:layout_width="118dp"
+                    android:layout_height="118dp"
+                    android:layout_margin="1dp"
+                    android:layout_centerHorizontal="true"
                     app:cardCornerRadius="60dp"
-                    android:elevation="10dp"
-                    app:contentPadding="2dp">
+                    app:contentPadding="2dp"
+                    android:elevation="10dp">
 
                 <ImageView
                     android:id="@+id/iv_userAvatar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="Member Profile Picture"
+                    android:padding="5dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_org" />
 
                 </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab_usp_addImage"
@@ -67,10 +98,8 @@
                 android:layout_marginRight="2dp"
                 android:padding="5dp"
                 android:visibility="invisible"
-                app:backgroundTint="@color/colorGrey"
+                app:backgroundTint="@android:color/white"
                 app:srcCompat="@mipmap/ic_add_new_member" />
-
-        </RelativeLayout>
 
 
         <LinearLayout
@@ -251,9 +280,7 @@
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        app:passwordToggleEnabled="true"
-                        >
+                        android:layout_marginBottom="10dp">
 
                         <EditText
                             android:id="@+id/edt_securityAnswer"
@@ -261,7 +288,6 @@
                             android:layout_height="match_parent"
                             android:hint="Your Answer"
                             android:textSize="14sp"
-                            android:inputType="textPassword"
                             android:layout_marginStart="10sp"
                             android:layout_marginLeft="10sp"/>
 
@@ -271,7 +297,10 @@
                         android:id="@+id/btn_changePassword"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:padding="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
                         android:hint="Change Password"
                         android:theme="@style/ButtonStyle"
                         android:textStyle="bold"
@@ -285,7 +314,6 @@
         </LinearLayout>
 
     </RelativeLayout>
-
-
-
 </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

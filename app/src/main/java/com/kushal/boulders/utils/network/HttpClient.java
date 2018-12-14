@@ -316,8 +316,6 @@ public class HttpClient {
     
     public void fetchMembers(String userId, String userOrg, final MemberCallback memberCallback) {
 
-        System.out.println(" getUserDBDetails ======================== " + mSharedPrefStorage.getUserDBDetails());
-
         String url = configStorage.getConfigValue(mSharedPrefStorage.getUserDBDetails(), "MEMBER_GET_URL") + "&parent=" + userId + "&org_name=" + userOrg ;
         Request request = new Request.Builder().url(url).build();
         mClient.newCall(request).enqueue(new Callback() {
@@ -400,11 +398,6 @@ public class HttpClient {
             }
         });
     }
-
-
-
-
-
 
 
     public void updateMember(JSONObject postBody, final MemberUpdationCallback memberUpdationCallback) {

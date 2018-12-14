@@ -1,7 +1,5 @@
 package com.kushal.boulders.dependencies.component;
 
-import android.content.Context;
-
 import com.kushal.boulders.activities.AddMemberActivity;
 import com.kushal.boulders.activities.AuthenticatedActivity;
 import com.kushal.boulders.activities.LoginActivity;
@@ -10,16 +8,17 @@ import com.kushal.boulders.activities.MainActivity;
 import com.kushal.boulders.activities.MemberProfileActivity;
 import com.kushal.boulders.activities.RegistrationActivity;
 import com.kushal.boulders.activities.UserProfileActivity;
+import com.kushal.boulders.dependencies.module.ConfigStoragePrefModule;
+import com.kushal.boulders.dependencies.module.ImageStoragePrefModule;
 import com.kushal.boulders.dependencies.module.NetworkModule;
 import com.kushal.boulders.dependencies.module.SharedPrefStorageModule;
-import com.kushal.boulders.utils.network.HttpClient;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 
 @Singleton
-@Component(modules = {NetworkModule.class, SharedPrefStorageModule.class})
+@Component(modules = {NetworkModule.class, SharedPrefStorageModule.class, ImageStoragePrefModule.class, ConfigStoragePrefModule.class})
 public interface AppComponent {
 
     void inject(RegistrationActivity activity);

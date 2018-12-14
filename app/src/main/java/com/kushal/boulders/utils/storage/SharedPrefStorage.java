@@ -15,7 +15,6 @@ public class SharedPrefStorage implements Storage {
         this.mSharedPref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }
 
-    @Override
     public User getUser() {
         String username = mSharedPref.getString("username", null);
 
@@ -26,7 +25,6 @@ public class SharedPrefStorage implements Storage {
         }
     }
 
-    @Override
     public void saveUserName(User user) {
         SharedPreferences.Editor editor = mSharedPref.edit();
         editor.putString("username", user.getUserName());
@@ -34,7 +32,6 @@ public class SharedPrefStorage implements Storage {
     }
 
 
-    @Override
     public void resetUserName() {
         SharedPreferences.Editor editor = mSharedPref.edit();
         editor.remove("username");
@@ -42,7 +39,7 @@ public class SharedPrefStorage implements Storage {
     }
 
     @Override
-    public void resetUser() {
+    public void resetStorage() {
         SharedPreferences.Editor editor = mSharedPref.edit();
         editor.clear();
         editor.apply();

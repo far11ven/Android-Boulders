@@ -29,18 +29,6 @@
 			},
 			{
 				"MEMBER_DELETE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/members/incoming_webhook/DELETE_Member_ById?secret=SECRET"
-			},
-			{
-				"MEMBER_IMAGE_CREATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/member_image/incoming_webhook/POST_MemberImage_ById_ByOrg?secret=SECRET"
-			},
-			{
-				"MEMBER_IMAGE_GET_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/member_image/incoming_webhook/GET_MemberImage_ById_ByOrg?secret=SECRET"
-			},
-			{
-				"MEMBER_IMAGE_UPDATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/member_image/incoming_webhook/EDIT_MemberImage_ById_ByOrg?secret=SECRET"
-			},
-			{
-				"MEMBER_IMAGE_DELETE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidapp-xitme/service/member_image/incoming_webhook/DELETE_MemberImage_ById_ByOrg?secret=SECRET"
 			}
 		]
 	},
@@ -57,18 +45,6 @@
 			},
 			{
 				"MEMBER_DELETE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/members/incoming_webhook/DELETE_Member_ById?secret=SECRET"
-			},
-			{
-				"MEMBER_IMAGE_CREATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/member_image/incoming_webhook/POST_MemberImage_ById_ByOrg?secret=SECRET"
-			},
-			{
-				"MEMBER_IMAGE_GET_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/member_image/incoming_webhook/GET_MemberImage_ById_ByOrg?secret=SECRET"
-			},
-			{
-				"MEMBER_IMAGE_UPDATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/member_image/incoming_webhook/EDIT_MemberImage_ById_ByOrg?secret=SECRET"
-			},
-			{
-				"MEMBER_IMAGE_DELETE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/member_image/incoming_webhook/DELETE_MemberImage_ById_ByOrg?secret=SECRET"
 			}
 		]
 	}

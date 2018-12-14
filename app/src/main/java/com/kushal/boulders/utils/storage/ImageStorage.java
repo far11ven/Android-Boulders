@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import com.kushal.boulders.models.User;
 
-public class ImageStorage{
+public class ImageStorage implements Storage{
 
     private static final String PREFS_NAME = "BouldersPrefs_ImageStorage";
 
@@ -13,6 +13,13 @@ public class ImageStorage{
 
     public ImageStorage(Context context) {
         this.mSharedPref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    }
+
+    @Override
+    public void resetStorage() {
+        SharedPreferences.Editor editor = mSharedPref.edit();
+        editor.clear();
+        editor.apply();
     }
 
     public String getMemberImage(String member_id) {

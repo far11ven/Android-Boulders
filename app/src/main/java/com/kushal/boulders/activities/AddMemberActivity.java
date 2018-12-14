@@ -19,6 +19,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -104,6 +105,20 @@ public class AddMemberActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_member);
         AppComponent appComponent = App.getApplicationContext(this).getAppComponent();
         appComponent.inject(this);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         snackview = findViewById(android.R.id.content);
         mMemberAvatar = findViewById(R.id.iv_amf_memberAvatar);
@@ -328,8 +343,8 @@ public class AddMemberActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(AddMemberActivity.this, MainActivity.class);
-        startActivity(intent);
+        Intent i= new Intent(AddMemberActivity.this, MainActivity.class);
+        startActivity(i);
         finish();
     }
 
@@ -375,7 +390,7 @@ public class AddMemberActivity extends AppCompatActivity {
 
 
     public void rotateImage(){
-        mMemberAvatar.setDrawingCacheEnabled(false);
+
         mMemberAvatar.setDrawingCacheEnabled(true);
 
         Bitmap fetchedBitmapFromImageView = mMemberAvatar.getDrawingCache();
