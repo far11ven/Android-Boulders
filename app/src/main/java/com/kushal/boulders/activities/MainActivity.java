@@ -85,6 +85,8 @@ public class MainActivity extends AuthenticatedActivity
 
         requestStoragePermission();
         getMemebersToSearch();
+        mRecyclerViewAllMembers.setAdapter(null);
+        mRecyclerViewUpcomingMembers.setAdapter(null);
 
         if(mSharedPrefStorage.getUserId() == null){
             saveLoggedInUser();
@@ -97,7 +99,7 @@ public class MainActivity extends AuthenticatedActivity
 
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             NavigationView nav = drawer.findViewById(R.id.nav_view);
-            ((TextView) nav.getHeaderView(0).findViewById(R.id.nav_username)).setText("Hi, " + mSharedPrefStorage.getUser().getUserName());
+            ((TextView) nav.getHeaderView(0).findViewById(R.id.nav_username)).setText("Hi, " + mSharedPrefStorage.getUser().getUserFirstName());
 
         }
     }
@@ -112,10 +114,6 @@ public class MainActivity extends AuthenticatedActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
-        //getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         mProgressBar = findViewById(R.id.rl_progressBar);
         mProgressBar.bringToFront();
@@ -145,10 +143,12 @@ public class MainActivity extends AuthenticatedActivity
         mRecyclerViewAllMembers = findViewById(R.id.rv_membersList);
         mRecyclerViewAllMembers.setHasFixedSize(true);
         mRecyclerViewAllMembers.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerViewAllMembers.setAdapter(null);
 
         mRecyclerViewUpcomingMembers = findViewById(R.id.rv_UpcomingMembersList);
         mRecyclerViewUpcomingMembers.setHasFixedSize(true);
         mRecyclerViewUpcomingMembers.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerViewUpcomingMembers.setAdapter(null);
 
         memberListItems = new ArrayList<>();
         upcomingMemberListItems = new ArrayList<>();
@@ -234,6 +234,9 @@ public class MainActivity extends AuthenticatedActivity
         mRecycleViewAdapterAllMembers=null;
         mRecycleViewAdapterUpcomingMembers=null;
 
+        mRecyclerViewAllMembers.setAdapter(null);              //CLEARING ALL EXISTING CONTENT
+        mRecyclerViewUpcomingMembers.setAdapter(null);         //CLEARING ALL EXISTING CONTENT
+
         mRecyclerViewAllMembers.setAdapter(mRecycleViewAdapterAllMembers);
         mRecyclerViewUpcomingMembers.setAdapter(mRecycleViewAdapterUpcomingMembers);
 
@@ -241,11 +244,13 @@ public class MainActivity extends AuthenticatedActivity
 
         Iterator<Member> iterator = memberListItems.iterator();
 
+        upcomingMemberListItems.clear();
+
         while (iterator.hasNext()) {
 
             Member currMember = iterator.next();
 
-            if (currMember.getCycleEndDate().before(new DateTime().plusDays(3).toDate())) {
+            if (currMember.getCycleEndDate().before(new DateTime().plusDays(2).toDate())) {
                 upcomingMemberListItems.add(currMember);
                 System.out.println(currMember.getCycleStartDate() + " ================================ adding members to upcoming" + currMember.getCycleEndDate().before(new DateTime().plusMonths(1).toDate()));
 

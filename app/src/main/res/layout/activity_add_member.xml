@@ -54,6 +54,9 @@
         app:layout_anchor="@+id/rl_mainLayout"
         app:layout_anchorGravity="top|right"
         android:layout_margin="@dimen/fab_margin"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
         app:backgroundTint="@color/colorAccent"
         app:srcCompat="@drawable/ic_save" />
 
@@ -66,7 +69,7 @@
         android:layout_marginRight="20dp"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="10dp">
 
         <RelativeLayout

@@ -30,6 +30,8 @@ import com.kushal.boulders.models.Member;
 import com.kushal.boulders.utils.network.HttpClient;
 import com.kushal.boulders.utils.storage.ImageStorage;
 
+import org.joda.time.DateTime;
+
 import java.text.SimpleDateFormat;
 
 import javax.inject.Inject;
@@ -160,6 +162,7 @@ public class MemberProfileActivity extends AppCompatActivity {
         TextView memberAddress = findViewById(R.id.tv_memberAddress);
         TextView memberCycleStartDate = findViewById(R.id.tv_memberCycleStartDate);
         TextView memberCycleEndDate = findViewById(R.id.tv_memberCycleEndDate);
+        TextView memberStatus = findViewById(R.id.tv_memberStatus);
 
         memberFirstName.setText(Member.getFirstName());
         memberLastName.setText(Member.getLastName());
@@ -169,12 +172,28 @@ public class MemberProfileActivity extends AppCompatActivity {
         memberCycleEndDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(Member.getCycleEndDate()));
         memberAddress.setText(Member.getAddress());
 
-        System.out.println(" ===================================== Member.getMemberImage()" + Member.getMemberImage() );
-
         if(imageStorage.getMemberImage(Member.getMemberId()) != null && !imageStorage.getMemberImage(Member.getMemberId()).isEmpty()) {
             Bitmap imageBitmap = decodeBase64(imageStorage.getMemberImage(Member.getMemberId()));
 
             memberAvatar.setImageBitmap(imageBitmap);
+        }
+
+        if (Member.getCycleEndDate().before(new DateTime().toDate())) {
+            memberStatus.setTextAppearance(this, R.style.MemberItemText_OVERDUE);
+            memberStatus.setText("OVERDUE");
+
+        } else if (Member.getCycleEndDate().equals(new DateTime().toDate())) {
+            memberStatus.setTextAppearance(this, R.style.MemberItemText_DUE);
+            memberStatus.setText("DUE TODAY");
+
+        } else if (Member.getCycleEndDate().before(new DateTime().plusDays(1).toDate())) {
+            memberStatus.setTextAppearance(this, R.style.MemberItemText_DUE);
+            memberStatus.setText("DUE TOMORROW");
+
+        } else{
+            memberStatus.setTextAppearance(this, R.style.MemberItemText_SETTLED);
+            memberStatus.setText("SETTLED");
+
         }
 
     }

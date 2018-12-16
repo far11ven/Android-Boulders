@@ -67,7 +67,6 @@ public class EditMemberProfileActivity extends AppCompatActivity {
     @Inject
     ImageStorage imageStorage;
 
-
     private RelativeLayout mProgressBar;
     private ImageView mMemberAvatar;
     private EditText mEditMemberFirstName;

@@ -372,6 +372,7 @@ public class AddMemberActivity extends AppCompatActivity {
                 bitmap = Bitmap.createBitmap(bitmap, 0, 0,bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 
                 imageBase64String = encodeToBase64(bitmap, Bitmap.CompressFormat.JPEG, 10);
+                System.out.println(" ====================================== imageBase64String : " + imageBase64String);
                 mMemberAvatar.setImageBitmap(bitmap);
                 fabRotateImage.setVisibility(View.VISIBLE);
 
@@ -403,6 +404,7 @@ public class AddMemberActivity extends AppCompatActivity {
         bitmap = Bitmap.createBitmap(fetchedBitmapFromImageView, 0, 0,fetchedBitmapFromImageView.getWidth(), fetchedBitmapFromImageView.getHeight(), matrix, true);
 
         imageBase64String = encodeToBase64(bitmap, Bitmap.CompressFormat.JPEG, 100);
+        System.out.println(" ====================================== imageBase64String rotate : " + imageBase64String);
         mMemberAvatar.setImageBitmap(bitmap);
 
     }

@@ -575,7 +575,7 @@ public class HttpClient {
         saveUserDetails(username.getAsString(), user_Id.getAsString(), org_name.getAsString(), userFirstName.getAsString(), userLastName.getAsString(), db_name.getAsString());
 
         System.out.println(" ======= in http : password" + password.getAsString() );
-        return new User(username.getAsString() , password.getAsString() );
+        return new User(username.getAsString() , password.getAsString(), userFirstName.getAsString() );
     }
 
     private User getCreatedUser(String jsonResponse) {
@@ -597,7 +597,7 @@ public class HttpClient {
         JsonElement db_name = results.get("dbDetails");
         saveUserDetails(username.getAsString(), user_Id.getAsString(), org_name.getAsString(), first_name.getAsString(), last_name.getAsString(), db_name.getAsString());
 
-        return new User(username.getAsString() , password.getAsString() );
+        return new User(username.getAsString() , password.getAsString(), first_name.getAsString());
     }
 
     private Member getCreatedMember(String jsonResponse) {

@@ -307,6 +307,36 @@
                         </android.support.design.widget.TextInputLayout>
 
 
+                        <TextView
+                            android:id="@+id/lbl_tv_memberStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Status"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:drawableStart="@drawable/ic_email"
+                            android:drawableLeft="@drawable/ic_email"
+                            android:drawablePadding="3dp"
+                            android:layout_marginBottom="10dp"/>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp">
+
+                            <TextView
+                                android:id="@+id/tv_memberStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:singleLine="true"
+                                android:textSize="16sp"
+                                android:layout_marginStart="10sp"
+                                android:layout_marginLeft="10sp"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+
                     </LinearLayout>
                  </android.support.v7.widget.CardView>
 

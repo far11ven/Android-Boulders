@@ -17,9 +17,10 @@ public class SharedPrefStorage implements Storage {
 
     public User getUser() {
         String username = mSharedPref.getString("username", null);
+        String userFirstName = mSharedPref.getString("firstName", null);
 
         if (username != null ) {
-            return new User(username, "");
+            return new User(username, "",userFirstName);
         } else {
             return null;
         }

@@ -6,7 +6,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- MainActivity -->
-    <string name="text_hint_member">Search a member here</string>
+    <string name="text_hint_member">Search members by name </string>
 
     <!-- MenuItems -->
     <string name="text_item_edit_profile">Profile Settings</string>
