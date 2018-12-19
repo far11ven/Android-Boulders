@@ -304,6 +304,8 @@ public class AddMemberActivity extends AppCompatActivity {
 
     public JSONObject getPostBody(){
 
+        JSONObject postBody = new JSONObject();
+
         final String firstname = mEditMemberFirstName.getText().toString();
         final String lastname = mEditMemberLastName.getText().toString();
         final String phone = mEditMemberPhone.getText().toString();
@@ -315,7 +317,7 @@ public class AddMemberActivity extends AppCompatActivity {
         final String parent = mSharedPrefStorage.getUserId();
         final String linked_to = mSharedPrefStorage.getUserOrg();
 
-        JSONObject postBody = new JSONObject();
+
         try {
             postBody.put("first_name", firstname);
             postBody.put("last_name", lastname);

@@ -497,7 +497,7 @@ public class EditMemberProfileActivity extends AppCompatActivity {
 
         System.out.println(" ======================================== EditedMember :" + linked_to + " : " + mMember.getCreationDate().toString());
 
-        DateTimeFormatter jtf = DateTimeFormat.forPattern("yyyy-MM-dd");
+        //DateTimeFormatter jtf = DateTimeFormat.forPattern("yyyy-MM-dd");
 
         return new Member(mMember.getMemberId(), firstname, lastname, new DateTime(cycle_startdate), new DateTime(cycle_enddate), phone, email, parent, linked_to, address, imageBase64String, new DateTime(mMember.getCreationDate()), new DateTime(mMember.getLatUpdateDate()));
     }
