@@ -1,23 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:icon="@drawable/ic_member"
+    tools:context="com.kushal.boulders.activities.MainActivity">
 
-    <item
-        android:id="@+id/action_favorite"
-        android:icon="@drawable/ic_logout"
-        android:title="log"
-        app:showAsAction="always"/>
+    <item android:id="@+id/action_refresh"
+        android:icon="@drawable/ic_menu_refresh"
+        android:title="action_refresh"
+        app:showAsAction="always" />
 
-    <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_email"
-        android:title="mail"
-        app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="Setting"
-        app:showAsAction="never"/>
 </menu>

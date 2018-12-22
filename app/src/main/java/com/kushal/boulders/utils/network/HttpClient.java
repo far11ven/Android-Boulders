@@ -17,6 +17,7 @@ import com.kushal.boulders.activities.MainActivity;
 import com.kushal.boulders.models.Member;
 import com.kushal.boulders.models.User;
 import com.kushal.boulders.utils.storage.ConfigStorage;
+import com.kushal.boulders.utils.storage.ImageStorage;
 import com.kushal.boulders.utils.storage.SharedPrefStorage;
 
 import org.joda.time.DateTime;
@@ -53,6 +54,8 @@ public class HttpClient {
 
     SharedPrefStorage mSharedPrefStorage;
 
+    ImageStorage mImageStorage ;
+
     private String USER_AUTH_URL = null ;
     private String USER_GET_SECURITY_URL = null ;
     private String USER_EDIT_SECURITY_URL = null ;
@@ -76,6 +79,7 @@ public class HttpClient {
         mJsonParser = new JsonParser();
         mContext = context;
         configStorage = new ConfigStorage(mContext);
+        mImageStorage = new ImageStorage(mContext);
         mSharedPrefStorage = new SharedPrefStorage(mContext);
 
         USER_AUTH_URL = configStorage.getConfigValue("DB00", "USER_AUTH_URL") ;
@@ -214,7 +218,7 @@ public class HttpClient {
 
                 try (ResponseBody responseBody = response.body()) {
 
-                    String responseData = response.body().string();
+                    String responseData = responseBody.string();
 
                     if (!response.isSuccessful()) throw new IOException("Unexpected code " + responseData);
                     if(!responseData.contains("StitchError")){
@@ -313,7 +317,7 @@ public class HttpClient {
             }
         });
     }
-    
+
     public void fetchMembers(String userId, String userOrg, final MemberCallback memberCallback) {
 
         String url = configStorage.getConfigValue(mSharedPrefStorage.getUserDBDetails(), "MEMBER_GET_URL") + "&parent=" + userId + "&org_name=" + userOrg ;
@@ -348,6 +352,50 @@ public class HttpClient {
 
                         memberCallback.setMembers(members);
                         memberCallback.run();
+
+                    }
+                }
+            }
+        });
+    }
+
+    public void fetchMemberImage(String parent_id, final String member_id, final MemberImageCallback memberImageCallback) {
+
+        String url = configStorage.getConfigValue(mSharedPrefStorage.getUserDBDetails(), "MEMBER_IMAGE_GET_URL") + "&parent_id=" + parent_id + "&member_id=" + member_id ;
+        Request request = new Request.Builder().url(url).build();
+        mClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @TargetApi(Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try (ResponseBody responseBody = response.body()) {
+
+                    String responseData = responseBody.string();
+
+                    memberImageCallback.setResponseMessage(responseData);
+
+                    if (!response.isSuccessful()) {
+                        throw new IOException("Unexpected code " + response);
+
+                    } else if(getResponseMessage().contains("Error fetching image for member :")){
+
+                        memberImageCallback.run();
+                    }
+                    else if(getResponseMessage().contains("Found image for member :")){
+
+                        Log.i(LOG_TAG, "Members Image Fetched successfully for " + member_id);
+
+                        JsonObject results = mJsonParser.parse(responseData).getAsJsonObject();
+
+                        JsonElement memberImage = results.getAsJsonPrimitive("result");
+
+                        mImageStorage.saveMemberImage(member_id, memberImage.getAsString());
+
+                        memberImageCallback.run();
 
                     }
                 }
@@ -664,6 +712,14 @@ public class HttpClient {
         void setMembers(ArrayList<Member> members) {
             mMembers = members;
         }
+
+        void setResponseMessage(String msg) {
+            HttpClient.responseMessage = msg;
+        }
+
+    }
+
+    public abstract static class MemberImageCallback implements Runnable {
 
         void setResponseMessage(String msg) {
             HttpClient.responseMessage = msg;

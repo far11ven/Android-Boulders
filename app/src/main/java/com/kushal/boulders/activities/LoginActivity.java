@@ -94,6 +94,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         snackview = findViewById(android.R.id.content);
 
+        mWaitingIndicator = findViewById(R.id.pb_progressBar);
+
         mUserLoginLayout = findViewById(R.id.ll_LoginLayout);
         mEditTextUsername = findViewById(R.id.edt_username);
         mEditTextPassword = findViewById(R.id.edt_password);
@@ -171,7 +173,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.btn_findUserDetails:
 
-                mWaitingIndicator = findViewById(R.id.pb_progressBar);
+
                 mWaitingIndicator.bringToFront();
                 mWaitingIndicator.setVisibility(View.VISIBLE);
 
@@ -265,6 +267,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         final String username = mEditTextUsername.getText().toString();
         final String password = mEditTextPassword.getText().toString();
 
+        mWaitingIndicator.bringToFront();
+        mWaitingIndicator.setVisibility(View.VISIBLE);
+
         final String passwordHash = Hashing.sha256()
                 .hashString(password, StandardCharsets.UTF_8)
                 .toString();
@@ -278,6 +283,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (mHttpClient.getResponseMessage().contains("User found")){
                          if (mUser.match(username, passwordHash)) {
                               mSharedPrefStorage.saveUserName(mUser);
+
+                             runOnUiThread(new Runnable() {
+                                 public void run() {
+
+                             mWaitingIndicator.setVisibility(View.INVISIBLE);
+
+                                 }
+                             });
 
                          // fetching SecurityQuestion
                           mHttpClient.fetchUserSecurityDetails(username, new HttpClient.UserSecurityCallback() {
@@ -322,11 +335,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                            Log.i(LOG_TAG, "Successful login with user: " + username);
                          } else {
 
+                             runOnUiThread(new Runnable() {
+                                 public void run() {
+
+                                     mWaitingIndicator.setVisibility(View.INVISIBLE);
+
+                                 }
+                             });
+
                              makeSnackbar( "Incorrect Username/Password", Snackbar.LENGTH_INDEFINITE);
                              Log.i(LOG_TAG, "Failed login with user: " + username);
                          }
 
                     } else {
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+
+                                mWaitingIndicator.setVisibility(View.INVISIBLE);
+
+                            }
+                        });
 
                         makeSnackbar( "Incorrect Username/Password", Snackbar.LENGTH_INDEFINITE);
                         Log.i(LOG_TAG, "Failed login with user: " + username);
@@ -335,6 +364,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             });
 
         } else {
+
+            runOnUiThread(new Runnable() {
+                public void run() {
+
+                    mWaitingIndicator.setVisibility(View.INVISIBLE);
+
+                }
+            });
 
             makeSnackbar( "Password should have atleast 6 characters", Snackbar.LENGTH_INDEFINITE);
 

@@ -22,12 +22,26 @@
         android:layout_marginBottom="20dp"
         android:layout_above="@+id/ll_layout_registration"/>
 
+    <ProgressBar
+        android:id="@+id/pb_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:indeterminate="true"
+        android:indeterminateBehavior="cycle"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateTint="@color/colorBlue"
+        android:layout_below="@+id/iv_applogo"
+        android:visibility="invisible"/>
+
     <LinearLayout
        android:id="@+id/ll_layout_registration"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
         android:layout_marginTop="40dp"
-        android:layout_below="@+id/iv_applogo"
+        android:layout_below="@+id/pb_progressBar"
        android:orientation="vertical">
 
     <TextView

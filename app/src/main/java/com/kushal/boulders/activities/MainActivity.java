@@ -17,8 +17,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AutoCompleteTextView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
@@ -84,9 +87,12 @@ public class MainActivity extends AuthenticatedActivity
         super.onResume();
 
         requestStoragePermission();
-        getMemebersToSearch();
-        mRecyclerViewAllMembers.setAdapter(null);
-        mRecyclerViewUpcomingMembers.setAdapter(null);
+
+        //mProgressBar.setVisibility(View.VISIBLE);
+
+        //mRecyclerViewAllMembers.setAdapter(null);
+        //mRecyclerViewUpcomingMembers.setAdapter(null);
+        //getMemebersToSearch();
 
         if(mSharedPrefStorage.getUserId() == null){
             saveLoggedInUser();
@@ -116,8 +122,6 @@ public class MainActivity extends AuthenticatedActivity
         setSupportActionBar(toolbar);
 
         mProgressBar = findViewById(R.id.rl_progressBar);
-        mProgressBar.bringToFront();
-        mProgressBar.setVisibility(View.VISIBLE);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -179,6 +183,9 @@ public class MainActivity extends AuthenticatedActivity
             saveLoggedInUser();
         }
 
+        mProgressBar.bringToFront();
+        mProgressBar.setVisibility(View.VISIBLE);
+
         System.out.println(" ====================================== Trying to fetch members for " + mSharedPrefStorage.getUserId() + mSharedPrefStorage.getUserId());
 
         mHttpClient.fetchMembers( mSharedPrefStorage.getUserId(),  mSharedPrefStorage.getUserOrg(), new HttpClient.MemberCallback() {
@@ -229,6 +236,28 @@ public class MainActivity extends AuthenticatedActivity
         });
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_main_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                mRecyclerViewAllMembers.setAdapter(null);
+                mRecyclerViewUpcomingMembers.setAdapter(null);
+                getMemebersToSearch();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
     public void getMemebersList(){
 
         mRecycleViewAdapterAllMembers=null;
@@ -238,6 +267,7 @@ public class MainActivity extends AuthenticatedActivity
         mRecyclerViewUpcomingMembers.setAdapter(null);         //CLEARING ALL EXISTING CONTENT
 
         mRecyclerViewAllMembers.setAdapter(mRecycleViewAdapterAllMembers);
+
         mRecyclerViewUpcomingMembers.setAdapter(mRecycleViewAdapterUpcomingMembers);
 
         memberListItems = mHttpClient.getMembersList();
@@ -246,14 +276,24 @@ public class MainActivity extends AuthenticatedActivity
 
         upcomingMemberListItems.clear();
 
+        int i=0;
+
         while (iterator.hasNext()) {
 
             Member currMember = iterator.next();
 
+            if(iterator.hasNext()){
+                searchForMemberImage(currMember.getParent(), currMember.getMemberId(), i, false);
+            } else {
+
+                searchForMemberImage(currMember.getParent(), currMember.getMemberId(), i, true);
+            }
+
+            i++;
+
             if (currMember.getCycleEndDate().before(new DateTime().plusDays(2).toDate())) {
                 upcomingMemberListItems.add(currMember);
                 System.out.println(currMember.getCycleStartDate() + " ================================ adding members to upcoming" + currMember.getCycleEndDate().before(new DateTime().plusMonths(1).toDate()));
-
 
             }
         }
@@ -265,7 +305,6 @@ public class MainActivity extends AuthenticatedActivity
 
         mRecyclerViewAllMembers.setAdapter(mRecycleViewAdapterAllMembers);
         mRecyclerViewUpcomingMembers.setAdapter(mRecycleViewAdapterUpcomingMembers);
-
 
         System.out.println(" ====================================== setting adapter forRecyclerVIEW COMPLETE");
 
@@ -363,6 +402,30 @@ public class MainActivity extends AuthenticatedActivity
             }
         }
     }
+
+    public void searchForMemberImage(String parent_id, String member_id, int position,final boolean isLast) {
+        final int index = position;
+
+        mHttpClient.fetchMemberImage(parent_id, member_id, new HttpClient.MemberImageCallback() {
+            @Override
+            public void run() {
+
+                if (mHttpClient.getResponseMessage().contains("Found image for member :")) {
+
+                    if(isLast){
+                        //mRecycleViewAdapterAllMembers.notifyDataSetChanged();
+                    }
+
+                } else {
+                    System.out.println(" else MemberImage == ");
+
+
+                }
+            }
+        });
+
+    }
+
 
 
 }
