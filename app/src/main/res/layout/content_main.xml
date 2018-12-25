@@ -135,7 +135,6 @@
         </LinearLayout>
     </TabHost>
 
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -144,6 +143,6 @@
         android:layout_margin="@dimen/fab_margin"
         android:padding="4dp"
         app:backgroundTint="@color/colorAccent"
-        app:srcCompat="@mipmap/ic_add_new_member" />
+        app:srcCompat="@drawable/ic_add_new_member" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -51,6 +51,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
         app:layout_anchor="@+id/rl_mainLayout"
         app:layout_anchorGravity="top|right"
         android:layout_margin="@dimen/fab_margin"
@@ -127,7 +128,7 @@
                 android:layout_height="wrap_content"
                 app:fabSize="mini"
                 android:scaleType="centerCrop"
-                app:srcCompat="@mipmap/ic_add_new_member"
+                app:srcCompat="@drawable/ic_add_new_member"
                 app:layout_anchor="@id/fab_emf_rotateImage"
                 app:backgroundTint="@color/colorGrey"
                 app:layout_anchorGravity="bottom" />
@@ -312,8 +313,8 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_location"
-                        android:drawableLeft="@drawable/ic_location"
+                        android:drawableStart="@drawable/ic_address"
+                        android:drawableLeft="@drawable/ic_address"
                         android:drawablePadding="3dp"
                         android:layout_marginBottom="2dp"/>
 
@@ -335,12 +336,12 @@
                         android:id="@+id/lbl_emf_tv_emf_memberCycleStartDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="CycleStartDate"
+                        android:text="Cycle Starts On"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_date"
-                        android:drawableLeft="@drawable/ic_date"
+                        android:drawableStart="@drawable/ic_date_start"
+                        android:drawableLeft="@drawable/ic_date_start"
                         android:drawablePadding="3dp"
                         android:layout_marginBottom="2dp"/>
 
@@ -365,12 +366,12 @@
                         android:id="@+id/lbl_emf_tv_emf_memberCycleEndDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Cycle Ends on"
+                        android:text="Cycle Ending On"
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_date"
-                        android:drawableLeft="@drawable/ic_date"
+                        android:drawableStart="@drawable/ic_date_end"
+                        android:drawableLeft="@drawable/ic_date_end"
                         android:drawablePadding="3dp"
                         android:layout_marginBottom="2dp"/>
 

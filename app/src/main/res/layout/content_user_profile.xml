@@ -99,7 +99,7 @@
                 android:padding="5dp"
                 android:visibility="invisible"
                 app:backgroundTint="@android:color/white"
-                app:srcCompat="@mipmap/ic_add_new_member" />
+                app:srcCompat="@drawable/ic_add_new_member" />
 
 
         <LinearLayout
@@ -193,8 +193,8 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_location"
-                        android:drawableLeft="@drawable/ic_location"
+                        android:drawableStart="@drawable/ic_address"
+                        android:drawableLeft="@drawable/ic_address"
                         android:drawablePadding="3dp"
                         android:layout_marginBottom="2dp"/>
 
@@ -253,8 +253,8 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_email"
-                        android:drawableLeft="@drawable/ic_email"
+                        android:drawableStart="@drawable/ic_security"
+                        android:drawableLeft="@drawable/ic_security"
                         android:drawablePadding="3dp"
                         android:layout_marginBottom="2dp"
                         />
@@ -297,10 +297,7 @@
                         android:id="@+id/btn_changePassword"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
+                        android:padding="10dp"
                         android:hint="Change Password"
                         android:theme="@style/ButtonStyle"
                         android:textStyle="bold"

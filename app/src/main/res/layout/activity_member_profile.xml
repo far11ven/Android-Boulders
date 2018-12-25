@@ -18,28 +18,39 @@
         android:visibility="invisible"
         layout="@layout/activity_edit_member_profile" />
 
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_deleteMember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:layout_gravity="end|top"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginBottom="160dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
         app:backgroundTint="@color/colorGrey"
-        app:layout_anchor="@id/fab_editMember"
-        app:srcCompat="@drawable/ic_delete"/>
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        android:src="@drawable/ic_delete" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_callMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="90dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        app:elevation="6dp"
+        app:backgroundTint="@color/colorGrey"
+        app:pressedTranslationZ="12dp"
+        android:src="@drawable/ic_call_shortcut" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_editMember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:scaleType="centerCrop"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="bottom|end"
+        app:elevation="6dp"
         app:backgroundTint="@color/colorAccent"
-        app:srcCompat="@mipmap/ic_edit_member"
-        />
+        app:pressedTranslationZ="12dp"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_edit" />
 
 
 </android.support.design.widget.CoordinatorLayout>

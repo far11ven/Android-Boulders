@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -115,6 +116,27 @@ public class MemberProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        FloatingActionButton callMember = findViewById(R.id.fab_callMember);
+
+        callMember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(" ====================================== Launching call screen  =========================================");
+
+                dialPhoneNumber(mMember.getPhone());
+
+            }
+        });
+    }
+
+
+    private void dialPhoneNumber(String phoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + phoneNumber));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     private void deleteMember(final Member mCurrMember) {

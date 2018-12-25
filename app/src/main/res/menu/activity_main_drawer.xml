@@ -7,12 +7,12 @@
 
         <item
             android:id="@+id/nav_editProfile"
-            android:icon="@mipmap/ic_edit_member"
+            android:icon="@drawable/ic_edit"
             android:title="@string/text_item_edit_profile" />
 
         <item
             android:id="@+id/nav_about"
-            android:icon="@mipmap/ic_about"
+            android:icon="@drawable/ic_about"
             android:title="@string/text_item_title_about" />
         <item
             android:id="@+id/nav_logout"
