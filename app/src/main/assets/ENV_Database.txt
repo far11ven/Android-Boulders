@@ -41,6 +41,9 @@
 				"MEMBER_GET_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/members/incoming_webhook/GET_Members_ByUser_ByOrg?secret=SECRET"
 			},
 			{
+                "MEMBER_IMAGE_GET_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/members/incoming_webhook/GET_MemberImage_ByParentId_ByMemberId?secret=SECRET"
+            },
+			{
 				"MEMBER_CREATE_URL": "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/bouldersandroidappdb1-ckkvd/service/members/incoming_webhook/POST_AddNewMember?secret=SECRET"
 			},
 			{

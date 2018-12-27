@@ -25,7 +25,7 @@
         android:layout_marginBottom="160dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
-        app:backgroundTint="@color/colorGrey"
+        app:backgroundTint="@color/colorWhite"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
         android:src="@drawable/ic_delete" />
@@ -37,7 +37,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         app:elevation="6dp"
-        app:backgroundTint="@color/colorGrey"
+        app:backgroundTint="@color/colorWhite"
         app:pressedTranslationZ="12dp"
         android:src="@drawable/ic_call_shortcut" />
 

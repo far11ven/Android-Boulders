@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,400 +10,403 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
-
-    <View
-        android:id="@+id/view_emf_greenArea"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:background="@color/colorAccent"/>
-
-    <View
-        android:id="@+id/view_emf_greyArea"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/view_emf_greenArea"
-        android:background="@color/colorGrey"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
-        app:layout_anchor="@+id/rl_mainLayout"
-        app:layout_anchorGravity="top|right"
-        android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/colorAccent"
-        app:srcCompat="@drawable/ic_save" />
-
-    <RelativeLayout
-        android:id="@+id/rl_mainLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="10dp">
-
-        <RelativeLayout
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:elevation="12dp">
-
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_emf_memberAvatar"
-                style="@style/MemberItem_CardViewStyle"
-                android:layout_width="124dp"
-                android:layout_height="124dp"
-                android:layout_centerHorizontal="true"
-                app:cardCornerRadius="60dp"
-                app:contentPadding="2dp"
-                android:elevation="10dp">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_emf_memberAvatarHolder"
-                style="@style/MemberItemAvatarHolder_CardViewStyle"
-                android:layout_width="118dp"
-                android:layout_height="118dp"
-                android:layout_margin="1dp"
-                android:layout_centerHorizontal="true"
-                app:cardCornerRadius="60dp"
-                app:contentPadding="2dp"
-                android:elevation="10dp">
-
-
-            <ImageView
-                    android:id="@+id/iv_emf_memberAvatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="Member Profile Picture"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_member" />
-
-             </android.support.v7.widget.CardView>
-            </android.support.v7.widget.CardView>
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_emf_rotateImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                app:fabSize="mini"
-                android:scaleType="centerCrop"
-                app:backgroundTint="@color/colorGrey"
-                app:srcCompat="@drawable/ic_rotateright" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_emf_addImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fabSize="mini"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_add_new_member"
-                app:layout_anchor="@id/fab_emf_rotateImage"
-                app:backgroundTint="@color/colorGrey"
-                app:layout_anchorGravity="bottom" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_progressBar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="invisible"
-            android:background="@android:color/transparent">
-
-            <ProgressBar
-                android:id="@+id/pb_progressBar"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="200dp"
-                android:indeterminate="true"
-                android:indeterminateBehavior="cycle"
-                android:indeterminateTint="@color/colorBlue"
-                android:paddingBottom="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/pb_progressBar"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:text="Saving Member Details.." />
-
-        </RelativeLayout>
-
-        <LinearLayout
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:orientation="vertical">
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:backgroundTint="@color/colorAccent"
-                app:cardCornerRadius="30dp"
-                app:contentPadding="2dp"
-                >
-
-              <android.support.v7.widget.CardView
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardCornerRadius="30dp"
-                app:contentPaddingBottom="15dp"
-                app:contentPaddingLeft="15dp"
-                app:contentPaddingRight="15dp"
-                app:contentPaddingTop="15dp">
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-                <LinearLayout
-                    android:id ="@+id/ll_emf_memeberDetailsHolder"
+        </android.support.design.widget.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/view_emf_greenArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:background="@color/colorAccent" />
+
+                <View
+                    android:id="@+id/view_emf_greyArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/view_emf_greenArea"
+                    android:background="@color/colorGrey" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:layout_marginBottom="80dp"
+                    android:scaleType="center"
+                    app:backgroundTint="@color/colorAccent"
+                    app:layout_anchor="@+id/rl_mainLayout"
+                    app:layout_anchorGravity="top|right"
+                    app:srcCompat="@drawable/ic_save" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_mainLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="10dp">
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="12dp">
+
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/cv_emf_memberAvatar"
+                            style="@style/MemberItem_CardViewStyle"
+                            android:layout_width="124dp"
+                            android:layout_height="124dp"
+                            android:layout_centerHorizontal="true"
+                            android:elevation="10dp"
+                            app:cardCornerRadius="60dp"
+                            app:contentPadding="2dp">
+
+                            <android.support.v7.widget.CardView
+                                android:id="@+id/cv_emf_memberAvatarHolder"
+                                style="@style/MemberItemAvatarHolder_CardViewStyle"
+                                android:layout_width="118dp"
+                                android:layout_height="118dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_margin="1dp"
+                                android:elevation="10dp"
+                                app:cardCornerRadius="60dp"
+                                app:contentPadding="0dp">
+
+
+                                <ImageView
+                                    android:id="@+id/iv_emf_memberAvatar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:contentDescription="Member Profile Picture"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ic_member" />
+
+                            </android.support.v7.widget.CardView>
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.design.widget.FloatingActionButton
+                            android:id="@+id/fab_emf_rotateImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="centerCrop"
+                            app:backgroundTint="@color/colorWhite"
+                            app:fabSize="mini"
+                            app:srcCompat="@drawable/ic_rotateright" />
+
+                        <android.support.design.widget.FloatingActionButton
+                            android:id="@+id/fab_emf_addImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="centerCrop"
+                            app:backgroundTint="@color/colorWhite"
+                            app:fabSize="mini"
+                            app:layout_anchor="@id/fab_emf_rotateImage"
+                            app:layout_anchorGravity="bottom"
+                            app:srcCompat="@drawable/ic_add_new_member" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:visibility="invisible">
+
+                        <ProgressBar
+                            android:id="@+id/pb_progressBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="200dp"
+                            android:indeterminate="true"
+                            android:indeterminateBehavior="cycle"
+                            android:indeterminateTint="@color/colorBlue"
+                            android:paddingBottom="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pb_progressBar"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="Saving Member Details.." />
+
+                    </RelativeLayout>
 
                     <LinearLayout
-                        android:id="@+id/til_emf_memeberNameHolder"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp">
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/edt_emf_memberFirstName"
-                            android:layout_width="wrap_content"
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@android:color/black"
-                            android:hint="First Name"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:paddingLeft="5dp"
-                            android:paddingStart="5dp"
-                            android:paddingRight="5dp"
-                            android:paddingEnd="5dp"
-                            android:layout_weight="0.5"/>
+                            android:layout_marginTop="100dp"
+                            android:backgroundTint="@color/colorAccent"
+                            app:cardCornerRadius="30dp"
+                            app:contentPadding="2dp">
 
-                        <EditText
-                            android:id="@+id/edt_emf_memberLastName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@android:color/black"
-                            android:hint="Last Name"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:paddingLeft="5dp"
-                            android:paddingStart="5dp"
-                            android:paddingRight="5dp"
-                            android:paddingEnd="5dp"
-                            android:layout_weight="0.5"/>
+                            <android.support.v7.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:cardCornerRadius="30dp"
+                                app:contentPaddingBottom="15dp"
+                                app:contentPaddingLeft="15dp"
+                                app:contentPaddingRight="15dp"
+                                app:contentPaddingTop="15dp">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_emf_memeberDetailsHolder"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="10dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/til_emf_memeberNameHolder"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp">
+
+                                        <EditText
+                                            android:id="@+id/edt_emf_memberFirstName"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0.5"
+                                            android:hint="First Name"
+                                            android:paddingStart="5dp"
+                                            android:paddingLeft="5dp"
+                                            android:paddingEnd="5dp"
+                                            android:paddingRight="5dp"
+                                            android:textColor="@android:color/black"
+                                            android:textSize="20sp"
+                                            android:textStyle="bold" />
+
+                                        <EditText
+                                            android:id="@+id/edt_emf_memberLastName"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0.5"
+                                            android:hint="Last Name"
+                                            android:paddingStart="5dp"
+                                            android:paddingLeft="5dp"
+                                            android:paddingEnd="5dp"
+                                            android:paddingRight="5dp"
+                                            android:textColor="@android:color/black"
+                                            android:textSize="20sp"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+
+                                    <View
+                                        android:id="@+id/view_emf_lineSeparator"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="2dp"
+                                        android:layout_below="@+id/til_emf_memeberNameHolder"
+                                        android:layout_marginBottom="10dp"
+                                        android:background="@color/colorGrey" />
+
+                                    <TextView
+                                        android:id="@+id/lbl_emf_tv_emf_memberPhone"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:drawableStart="@drawable/ic_phone"
+                                        android:drawableLeft="@drawable/ic_phone"
+                                        android:drawablePadding="3dp"
+                                        android:text="Phone"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <android.support.design.widget.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <EditText
+                                            android:id="@+id/edt_emf_memberPhone"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="10sp"
+                                            android:layout_marginLeft="10sp"
+                                            android:inputType="phone"
+                                            android:singleLine="true"
+                                            android:textSize="14sp" />
+                                    </android.support.design.widget.TextInputLayout>
+
+                                    <TextView
+                                        android:id="@+id/lbl_emf_tv_emf_memberEmail"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:drawableStart="@drawable/ic_email"
+                                        android:drawableLeft="@drawable/ic_email"
+                                        android:drawablePadding="3dp"
+                                        android:text="Email"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <android.support.design.widget.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <EditText
+                                            android:id="@+id/edt_emf_memberEmail"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="10sp"
+                                            android:layout_marginLeft="10sp"
+                                            android:singleLine="true"
+                                            android:textSize="14sp" />
+
+                                    </android.support.design.widget.TextInputLayout>
+
+
+                                    <TextView
+                                        android:id="@+id/lbl_emf_tv_emf_memberAddress"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:drawableStart="@drawable/ic_address"
+                                        android:drawableLeft="@drawable/ic_address"
+                                        android:drawablePadding="3dp"
+                                        android:text="Address"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <android.support.design.widget.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <EditText
+                                            android:id="@+id/edt_emf_memberAddress"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="10sp"
+                                            android:layout_marginLeft="10sp"
+                                            android:textSize="14sp" />
+                                    </android.support.design.widget.TextInputLayout>
+
+                                    <TextView
+                                        android:id="@+id/lbl_emf_tv_emf_memberCycleStartDate"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:drawableStart="@drawable/ic_date_start"
+                                        android:drawableLeft="@drawable/ic_date_start"
+                                        android:drawablePadding="3dp"
+                                        android:text="Cycle Starts On"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <android.support.design.widget.TextInputLayout
+                                        android:id="@+id/holder_emf_memberCycleStartDate"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <EditText
+                                            android:id="@+id/edt_emf_memberCycleStartDate"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="10sp"
+                                            android:layout_marginLeft="10sp"
+                                            android:focusable="false"
+                                            android:singleLine="true"
+                                            android:textSize="14sp" />
+                                    </android.support.design.widget.TextInputLayout>
+
+                                    <TextView
+                                        android:id="@+id/lbl_emf_tv_emf_memberCycleEndDate"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:drawableStart="@drawable/ic_date_end"
+                                        android:drawableLeft="@drawable/ic_date_end"
+                                        android:drawablePadding="3dp"
+                                        android:text="Cycle Ending On"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <android.support.design.widget.TextInputLayout
+                                        android:id="@+id/holder_emf_memberCycleEndDate"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp">
+
+                                        <EditText
+                                            android:id="@+id/edt_emf_memberCycleEndDate"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="10sp"
+                                            android:layout_marginLeft="10sp"
+                                            android:focusable="false"
+                                            android:singleLine="true"
+                                            android:textSize="14sp" />
+                                    </android.support.design.widget.TextInputLayout>
+
+
+                                </LinearLayout>
+
+                            </android.support.v7.widget.CardView>
+                        </android.support.v7.widget.CardView>
 
                     </LinearLayout>
 
+                </RelativeLayout>
 
-                    <View
-                        android:id="@+id/view_emf_lineSeparator"
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_below="@+id/til_emf_memeberNameHolder"
-                        android:background="@color/colorGrey"
-                        android:layout_marginBottom="10dp"/>
-
-                    <TextView
-                        android:id="@+id/lbl_emf_tv_emf_memberPhone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Phone"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_phone"
-                        android:drawableLeft="@drawable/ic_phone"
-                        android:drawablePadding="3dp"
-                        android:layout_marginBottom="2dp"
-                        />
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp">
-
-                        <EditText
-                            android:id="@+id/edt_emf_memberPhone"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:singleLine="true"
-                            android:textSize="14sp"
-                            android:layout_marginStart="10sp"
-                            android:layout_marginLeft="10sp"
-                            android:inputType = "phone"/>
-                    </android.support.design.widget.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/lbl_emf_tv_emf_memberEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Email"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_email"
-                        android:drawableLeft="@drawable/ic_email"
-                        android:drawablePadding="3dp"
-                        android:layout_marginBottom="2dp"/>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp">
-
-                        <EditText
-                            android:id="@+id/edt_emf_memberEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:singleLine="true"
-                            android:textSize="14sp"
-                            android:layout_marginStart="10sp"
-                            android:layout_marginLeft="10sp"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-
-                    <TextView
-                        android:id="@+id/lbl_emf_tv_emf_memberAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Address"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_address"
-                        android:drawableLeft="@drawable/ic_address"
-                        android:drawablePadding="3dp"
-                        android:layout_marginBottom="2dp"/>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp">
-
-                        <EditText
-                            android:id="@+id/edt_emf_memberAddress"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textSize="14sp"
-                            android:layout_marginStart="10sp"
-                            android:layout_marginLeft="10sp"/>
-                    </android.support.design.widget.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/lbl_emf_tv_emf_memberCycleStartDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cycle Starts On"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_date_start"
-                        android:drawableLeft="@drawable/ic_date_start"
-                        android:drawablePadding="3dp"
-                        android:layout_marginBottom="2dp"/>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/holder_emf_memberCycleStartDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp">
-
-                        <EditText
-                            android:id="@+id/edt_emf_memberCycleStartDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:singleLine="true"
-                            android:textSize="14sp"
-                            android:layout_marginStart="10sp"
-                            android:layout_marginLeft="10sp"
-                            android:focusable="false"/>
-                    </android.support.design.widget.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/lbl_emf_tv_emf_memberCycleEndDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cycle Ending On"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:drawableStart="@drawable/ic_date_end"
-                        android:drawableLeft="@drawable/ic_date_end"
-                        android:drawablePadding="3dp"
-                        android:layout_marginBottom="2dp"/>
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/holder_emf_memberCycleEndDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp">
-
-                        <EditText
-                            android:id="@+id/edt_emf_memberCycleEndDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:singleLine="true"
-                            android:textSize="14sp"
-                            android:layout_marginStart="10sp"
-                            android:layout_marginLeft="10sp"
-                            android:focusable="false"/>
-                    </android.support.design.widget.TextInputLayout>
-
-
-                </LinearLayout>
-
-              </android.support.v7.widget.CardView>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
 
     </RelativeLayout>
 
-    </RelativeLayout>
-
-    </RelativeLayout>
-
-</ScrollView>
+</android.support.constraint.ConstraintLayout>

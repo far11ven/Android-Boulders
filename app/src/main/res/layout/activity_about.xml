@@ -33,9 +33,22 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:layout_constraintVertical_bias="0.0">
 
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="12dp"
+            android:contentDescription="App Icon"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/iv_logo"
             android:orientation="vertical">
 
             <TextView
@@ -47,7 +60,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/app_name"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorAccentGrey"
                 android:textSize="22dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +76,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/app_version"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorGrey"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -78,6 +91,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
+                android:text="@string/about_text3"
                 android:textColor="@color/colorPink"
                 android:textSize="22dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -93,11 +107,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:textColor="@color/colorGreen"
                 android:textSize="16dp"
                 android:textStyle="italic" />
 
         </LinearLayout>
+
 
     </android.support.v7.widget.CardView>
 

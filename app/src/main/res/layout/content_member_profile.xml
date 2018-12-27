@@ -70,7 +70,7 @@
                     android:layout_margin="1dp"
                     android:layout_centerHorizontal="true"
                     app:cardCornerRadius="60dp"
-                    app:contentPadding="2dp"
+                    app:contentPadding="0dp"
                     android:elevation="10dp">
 
 

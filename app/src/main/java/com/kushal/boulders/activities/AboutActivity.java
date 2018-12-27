@@ -40,9 +40,7 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-
-        //"all the steps will come here "
-        TextView textView =(TextView)findViewById(R.id.aboutHyperLink);
+        TextView textView =findViewById(R.id.aboutHyperLink);
         textView.setClickable(true);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         String text = "<a href='http://www.iamkushal.tumblr.com/android/boulders'> iamkushal.tumblr.com/android/boulders </a>";

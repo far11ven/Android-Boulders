@@ -333,6 +333,9 @@ public class MainActivity extends AuthenticatedActivity
         switch(id){
 
             case R.id.nav_logout :
+
+                //mRecyclerViewAllMembers.setAdapter(null);
+                //mRecyclerViewUpcomingMembers.setAdapter(null);
                 mSharedPrefStorage.resetStorage();
                 mImageStorage.resetStorage();
                 Log.i(LOG_TAG, "User is logged out");

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Boulders</string>
-    <string name="app_version">1.0.2</string>
+    <string name="app_version">1.0.3</string>
+
+    <string name="about_text3">Made with ♥ in India.</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
