@@ -56,7 +56,7 @@ public class MemberAdapter extends ArrayAdapter<Member> {
         Member Member = mMembers.get(position);
         convertView.setOnClickListener(new OnMemberClickListener(Member, mOnMemberClickCallback));
         TextView textView = convertView.findViewById(android.R.id.text1);
-        textView.setText(Member.getFirstName());
+        textView.setText(Member.getFirstName() + " " + Member.getLastName());
         return convertView;
     }
 
@@ -66,7 +66,7 @@ public class MemberAdapter extends ArrayAdapter<Member> {
         return new Filter() {
             @Override
             public CharSequence convertResultToString(Object resultValue) {
-                return ((Member) resultValue).getFirstName();
+                return ((Member) resultValue).getFirstName() + " " + ((Member) resultValue).getLastName();
             }
 
             @Override
@@ -75,7 +75,7 @@ public class MemberAdapter extends ArrayAdapter<Member> {
                 ArrayList<Member> suggestions = new ArrayList<>();
                 if (charSequence != null) {
                     for (Member Member : mMembersCompleteSet) {
-                        if (Member.getFirstName().toLowerCase().startsWith(charSequence.toString().toLowerCase())) {
+                        if (Member.getFirstName().toLowerCase().startsWith(charSequence.toString().toLowerCase()) || Member.getLastName().toLowerCase().startsWith(charSequence.toString().toLowerCase())) {
                             suggestions.add(Member);
                         }
                     }

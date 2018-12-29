@@ -12,7 +12,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
         <include android:id="@+id/ll_userprofile_layout"
                 layout="@layout/content_user_profile" />
 
@@ -20,12 +19,12 @@
             android:id="@+id/fab_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="center"
-            app:layout_anchor="@id/toolbar"
-            app:layout_anchorGravity="bottom|end"
+            android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:backgroundTint="@color/colorWhite"
-            app:srcCompat="@drawable/ic_save" />
+            android:src="@drawable/ic_save"
+            app:backgroundTint="@color/colorAccent"
+            app:elevation="6dp"
+            app:pressedTranslationZ="12dp" />
 
 
     </android.support.design.widget.CoordinatorLayout>

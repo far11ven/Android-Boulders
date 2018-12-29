@@ -184,6 +184,7 @@ public class MemberProfileActivity extends AppCompatActivity {
         TextView memberAddress = findViewById(R.id.tv_memberAddress);
         TextView memberCycleStartDate = findViewById(R.id.tv_memberCycleStartDate);
         TextView memberCycleEndDate = findViewById(R.id.tv_memberCycleEndDate);
+        TextView memberSince = findViewById(R.id.tv_memberSince);
         TextView memberStatus = findViewById(R.id.tv_memberStatus);
 
         memberFirstName.setText(Member.getFirstName());
@@ -193,6 +194,7 @@ public class MemberProfileActivity extends AppCompatActivity {
         memberCycleStartDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(Member.getCycleStartDate()));
         memberCycleEndDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(Member.getCycleEndDate()));
         memberAddress.setText(Member.getAddress());
+        memberSince.setText(new SimpleDateFormat("yyyy-MM-dd").format(Member.getCreationDate()));
 
         if(imageStorage.getMemberImage(Member.getMemberId()) != null && !imageStorage.getMemberImage(Member.getMemberId()).isEmpty()) {
             Bitmap imageBitmap = decodeBase64(imageStorage.getMemberImage(Member.getMemberId()));
@@ -200,19 +202,27 @@ public class MemberProfileActivity extends AppCompatActivity {
             memberAvatar.setImageBitmap(imageBitmap);
         }
 
-        if (Member.getCycleEndDate().before(new DateTime().toDate())) {
-            memberStatus.setTextAppearance(this, R.style.MemberItemText_OVERDUE);
-            memberStatus.setText("OVERDUE");
+        DateTime now = new DateTime();
+        now.toDate().setTime(0000000000000L);
+        String currentDate  = now.toString().split("T")[0];
 
-        } else if (Member.getCycleEndDate().equals(new DateTime().toDate())) {
+        if (new SimpleDateFormat("yyyy-MM-dd").format(Member.getCycleEndDate()).equals(currentDate)) {
             memberStatus.setTextAppearance(this, R.style.MemberItemText_DUE);
             memberStatus.setText("DUE TODAY");
 
         } else if (Member.getCycleEndDate().before(new DateTime().plusDays(1).toDate())) {
-            memberStatus.setTextAppearance(this, R.style.MemberItemText_DUE);
-            memberStatus.setText("DUE TOMORROW");
 
-        } else{
+            if (Member.getCycleEndDate().before(new DateTime().toDate())) {
+
+                memberStatus.setTextAppearance(this, R.style.MemberItemText_OVERDUE);
+                memberStatus.setText("OVERDUE");
+            } else {
+
+                memberStatus.setTextAppearance(this, R.style.MemberItemText_DUE);
+                memberStatus.setText("DUE TOMORROW");
+            }
+
+        } else {
             memberStatus.setTextAppearance(this, R.style.MemberItemText_SETTLED);
             memberStatus.setText("SETTLED");
 

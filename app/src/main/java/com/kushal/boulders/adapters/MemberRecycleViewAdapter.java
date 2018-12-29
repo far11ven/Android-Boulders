@@ -99,7 +99,6 @@ public class MemberRecycleViewAdapter extends RecyclerView.Adapter<MemberRecycle
         imageStorage = new ImageStorage(context);
 
 
-
         try {
             imageBitmap = decodeBase64(imageStorage.getMemberImage(memberItem.getMemberId()));
             holder.mMemberAvatar.setImageBitmap(imageBitmap);
@@ -116,17 +115,25 @@ public class MemberRecycleViewAdapter extends RecyclerView.Adapter<MemberRecycle
         holder.mLastName.setText(memberItem.getLastName());
         holder.mCycleEndDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(memberItem.getCycleEndDate()));
 
-        if (memberItem.getCycleEndDate().before(new DateTime().toDate())) {
-            holder.mMemberStatus.setTextAppearance(context, R.style.MemberItemText_OVERDUE);
-            holder.mMemberStatus.setText("OVERDUE");
+        DateTime now = new DateTime();
+        now.toDate().setTime(0000000000000L);
+        String currentDate  = now.toString().split("T")[0];
 
-        } else if (memberItem.getCycleEndDate().equals(new DateTime().toDate())) {
+        if (new SimpleDateFormat("yyyy-MM-dd").format(memberItem.getCycleEndDate()).equals(currentDate)) {
             holder.mMemberStatus.setTextAppearance(context, R.style.MemberItemText_DUE);
             holder.mMemberStatus.setText("DUE TODAY");
 
         } else if (memberItem.getCycleEndDate().before(new DateTime().plusDays(1).toDate())) {
-            holder.mMemberStatus.setTextAppearance(context, R.style.MemberItemText_DUE);
-            holder.mMemberStatus.setText("DUE TOMORROW");
+
+            if (memberItem.getCycleEndDate().before(new DateTime().toDate())) {
+
+                    holder.mMemberStatus.setTextAppearance(context, R.style.MemberItemText_OVERDUE);
+                    holder.mMemberStatus.setText("OVERDUE");
+            } else {
+
+                holder.mMemberStatus.setTextAppearance(context, R.style.MemberItemText_DUE);
+                holder.mMemberStatus.setText("DUE TOMORROW");
+            }
 
         } else {
             holder.mMemberStatus.setTextAppearance(context, R.style.MemberItemText_SETTLED);

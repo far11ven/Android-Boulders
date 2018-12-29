@@ -291,7 +291,7 @@ public class MainActivity extends AuthenticatedActivity
 
             i++;
 
-            if (currMember.getCycleEndDate().before(new DateTime().plusDays(2).toDate())) {
+            if (currMember.getCycleEndDate().before(new DateTime().plusDays(1).toDate())) {
                 upcomingMemberListItems.add(currMember);
                 System.out.println(currMember.getCycleStartDate() + " ================================ adding members to upcoming" + currMember.getCycleEndDate().before(new DateTime().plusMonths(1).toDate()));
 
