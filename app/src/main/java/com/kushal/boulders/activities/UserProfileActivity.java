@@ -221,8 +221,8 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
 
         if (validateUserDetails()){
 
-            if ((userSecurityQuestion != null && !userSecurityQuestion.equals(mSharedPrefStorage.getUserSecurityQuestion()))
-                    || (userSecurityAnswer != null && !userSecurityAnswer.equals(mSharedPrefStorage.getUserSecurityAnswer()))){
+            if ((userSecurityQuestion != null && !userSecurityQuestion.equals(mSharedPrefStorage.getUserSecurityQuestion())
+                    || userSecurityAnswer != null )){
 
                 saveUserSeurityDetails();
 

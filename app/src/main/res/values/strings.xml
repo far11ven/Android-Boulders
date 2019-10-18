@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Boulders</string>
-    <string name="app_version">1.0.4</string>
+    <string name="app_version">1.0.5</string>
 
-    <string name="about_text3">Made with ♥ in India.</string>
+    <string name="about_share_text">share with your family and friends</string>
+    <string name="about_make">Made with ♥ in India.</string>
+    <string name="rate_app"> Boulders? Rate us on play store </string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

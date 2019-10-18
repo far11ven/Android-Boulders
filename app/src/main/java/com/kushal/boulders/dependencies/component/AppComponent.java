@@ -1,5 +1,6 @@
 package com.kushal.boulders.dependencies.component;
 
+import com.kushal.boulders.activities.AboutActivity;
 import com.kushal.boulders.activities.AddMemberActivity;
 import com.kushal.boulders.activities.AuthenticatedActivity;
 import com.kushal.boulders.activities.LoginActivity;
@@ -36,5 +37,7 @@ public interface AppComponent {
     void inject(MemberProfileActivity activity);
 
     void inject(UserProfileActivity activity);
+
+    void inject(AboutActivity activity);
 
 }

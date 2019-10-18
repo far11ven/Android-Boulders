@@ -9,5 +9,6 @@
     <color name="colorPink">#bf3b9c</color>
     <color name="colorGreen">#44ae3e</color>
     <color name="colorGrey">#d6d7d6</color>
+    <color name="colorDarkGrey">#A5A2A2</color>
     <color name="colorWhite">#ffffff</color>
 </resources>
